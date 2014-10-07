@@ -4,7 +4,7 @@ scriptencoding utf-8
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 06-Oct-2014.
+" Last Change: 07-Oct-2014.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -291,8 +291,8 @@ nmap <F11> :TrinityToggleNERDTree<CR>
 "---------------------------
 " NeoBundle
 "---------------------------
-set runtimepath+=~/vimfiles/bundle/neobundle.vim/
-call neobundle#begin(expand('~/vimfiles/bundle/'))
+set runtimepath+=$vim/vimfiles/bundle/neobundle.vim/
+call neobundle#begin(expand($vim . '/vimfiles/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'scrooloose/nerdtree'
