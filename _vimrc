@@ -4,7 +4,7 @@ scriptencoding utf-8
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 07-Oct-2014.
+" Last Change: 15-Oct-2014.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -276,17 +276,21 @@ noremap <C-U><C-U> :Unite buffer file_mru<CR>
 noremap <C-U><C-A> :Unite UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
 "------------------------------------
-" taglist
+" grep.vim
 "------------------------------------
-let Tlist_Sort_Type = 'name'
+nnoremap gr :<C-u>vimgrep /<C-R><C-W>/j ./**/*.*
+nnoremap <silent> gl :<C-u>vimgrep /<C-R><C-W>/j %<CR>
 
 "------------------------------------
-" trinity.vim
+" Tagbar
 "------------------------------------
-nmap <F8>  :TrinityToggleAll<CR>
-nmap <F9>  :TrinityToggleSourceExplorer<CR>
-nmap <F10> :TrinityToggleTagList<CR>
-nmap <F11> :TrinityToggleNERDTree<CR>
+nmap <F8> :let g:tagbar_left=1<CR> :TagbarToggle<CR>
+nmap <F9> :let g:tagbar_left=0<CR> :TagbarToggle<CR>
+
+"------------------------------------
+" VimFiler
+"------------------------------------
+let g:vimfiler_as_default_explorer = 1
 
 "---------------------------
 " NeoBundle
@@ -295,12 +299,11 @@ set runtimepath+=$vim/vimfiles/bundle/neobundle.vim/
 call neobundle#begin(expand($vim . '/vimfiles/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'taglist.vim'
-NeoBundle 'https://github.com/wesleyche/SrcExpl.git'
-NeoBundle 'https://github.com/wesleyche/Trinity.git'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'majutsushi/tagbar'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'vim-scripts/twilight'
