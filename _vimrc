@@ -4,7 +4,7 @@ scriptencoding utf-8
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 15-Oct-2014.
+" Last Change: 06-May-2016.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -147,6 +147,8 @@ set showmatch
 set wildmenu
 " テキスト挿入中の自動折り返しを日本語に対応させる
 set formatoptions+=mM
+" undoファイル保存パス
+set undodir=$HOME
 
 "---------------------------------------------------------------------------
 " GUI固有ではない画面表示の設定:
@@ -197,7 +199,7 @@ highlight Cursorline cterm=underline ctermfg=none ctermbg=none gui=underline gui
 "
 " バックアップファイルを作成しない (次行の先頭の " を削除すれば有効になる)
 set nobackup
-
+set noswapfile
 
 "---------------------------------------------------------------------------
 " ファイル名に大文字小文字の区別がないシステム用の設定:
@@ -264,6 +266,28 @@ endif
 
 filetype off
 
+"------------------------
+" for python
+"------------------------
+autocmd FileType python setl autoindent
+autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd FileType python setl tabstop=8 expandtab shiftwidth=4 softtabstop=4
+
+"------------------------
+" for ruby
+"------------------------
+autocmd FileType ruby setl tabstop=2 expandtab shiftwidth=2
+
+"------------------------
+" search
+"------------------------
+nnoremap <silent> gu /<C-R><C-W><CR>
+
+"------------------------
+" filer
+"------------------------
+nmap <F10> :sp %:h<CR>
+
 "------------------------------------
 " unite.vim
 "------------------------------------
@@ -286,11 +310,7 @@ nnoremap <silent> gl :<C-u>vimgrep /<C-R><C-W>/j %<CR>
 "------------------------------------
 nmap <F8> :let g:tagbar_left=1<CR> :TagbarToggle<CR>
 nmap <F9> :let g:tagbar_left=0<CR> :TagbarToggle<CR>
-
-"------------------------------------
-" VimFiler
-"------------------------------------
-let g:vimfiler_as_default_explorer = 1
+let g:tagbar_width = 46
 
 "---------------------------
 " NeoBundle
@@ -301,8 +321,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/vimfiler'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
@@ -315,6 +333,12 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/rdark'
 NeoBundle 'sjl/badwolf'
 
+NeoBundle 'noahfrederick/vim-hemisu'
+NeoBundle 'nelstrom/vim-mac-classic-theme'
+NeoBundle 'vim-scripts/EditPlus'
+NeoBundle 'iissnan/tangoX'
+NeoBundle 'vim-scripts/cascadia.vim'
+
 call neobundle#end()
 NeoBundleCheck
 
@@ -323,6 +347,7 @@ filetype plugin indent on
 
 "---------------------------------------------------------------------------
 " other customize
+"---------------------------------------------------------------------------
 
 "---------------------------
 " vimgrep
