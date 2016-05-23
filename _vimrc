@@ -300,10 +300,11 @@ noremap <C-U><C-U> :Unite buffer file_mru<CR>
 noremap <C-U><C-A> :Unite UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
 "------------------------------------
-" grep
+" qfixgrep
 "------------------------------------
+autocmd QuickFixCmdPost *grep* cwindow
 set grepprg=grep\ -nH
-nnoremap gr :<C-u>RGrep "<C-R><C-W>" *.* 
+nnoremap gr :<C-u>RGrep "<C-R><C-W>" *.*
 nnoremap <silent> gl :<C-u>vimgrep /<C-R><C-W>/j %<CR>
 
 "------------------------------------
@@ -351,11 +352,6 @@ filetype plugin indent on
 "---------------------------------------------------------------------------
 " other customize
 "---------------------------------------------------------------------------
-
-"---------------------------
-" vimgrep
-"---------------------------
-autocmd QuickFixCmdPost *grep* cwindow
 
 " Copyright (C) 2009-2013 KaoriYa/MURAOKA Taro
 " Modified by mnishi
