@@ -4,7 +4,7 @@ scriptencoding utf-8
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 06-May-2016.
+" Last Change: 23-May-2016.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -300,9 +300,10 @@ noremap <C-U><C-U> :Unite buffer file_mru<CR>
 noremap <C-U><C-A> :Unite UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
 "------------------------------------
-" grep.vim
+" grep
 "------------------------------------
-nnoremap gr :<C-u>vimgrep /<C-R><C-W>/j ./**/*.*
+set grepprg=grep\ -nH
+nnoremap gr :<C-u>RGrep "<C-R><C-W>" *.* 
 nnoremap <silent> gl :<C-u>vimgrep /<C-R><C-W>/j %<CR>
 
 "------------------------------------
@@ -322,6 +323,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'majutsushi/tagbar'
+NeoBundle 'fuenor/qfixgrep'
+
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'vim-scripts/twilight'
