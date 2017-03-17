@@ -4,7 +4,7 @@ scriptencoding utf-8
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 16-Mar-2017.
+" Last Change: 17-Mar-2017.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -304,15 +304,23 @@ noremap <C-U><C-A> :Unite UniteWithBufferDir -buffer-name=files buffer file_mru 
 "------------------------------------
 autocmd QuickFixCmdPost *grep* cwindow
 set grepprg=grep\ -nH
-nnoremap gr :<C-u>RGrep "<C-R><C-W>" *.*
+nnoremap gr :<C-u>grep -r "<C-R><C-W>" ./ 
 nnoremap <silent> gl :<C-u>vimgrep /<C-R><C-W>/j %<CR>
 
 "------------------------------------
 " Tagbar
 "------------------------------------
-nmap <F8> :let g:tagbar_left=1<CR> :TagbarToggle<CR>
-nmap <F9> :let g:tagbar_left=0<CR> :TagbarToggle<CR>
-let g:tagbar_width = 46
+"nmap <F8> :let g:tagbar_left=1<CR> :TagbarToggle<CR>
+"nmap <F9> :let g:tagbar_left=0<CR> :TagbarToggle<CR>
+"let g:tagbar_width = 46
+
+"------------------------------------
+" Taglist
+"------------------------------------
+nmap <F8> :let Tlist_Use_Right_Window=0<CR> :TlistToggle<CR>
+nmap <F9> :let Tlist_Use_Right_Window=1<CR> :TlistToggle<CR>
+let Tlist_WinWidth = 46
+let Tlist_Sort_Type = "name"
 
 "------------------------------------
 " neocomplete
@@ -398,7 +406,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'majutsushi/tagbar'
+"NeoBundle 'majutsushi/tagbar'
+NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'fuenor/qfixgrep'
 
 NeoBundle 'nanotech/jellybeans.vim'
