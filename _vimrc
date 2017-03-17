@@ -304,7 +304,7 @@ noremap <C-U><C-A> :Unite UniteWithBufferDir -buffer-name=files buffer file_mru 
 "------------------------------------
 autocmd QuickFixCmdPost *grep* cwindow
 set grepprg=grep\ -nH
-nnoremap gr :<C-u>grep -r "<C-R><C-W>" ./ 
+nnoremap gr :<C-u>grep -r "<C-R><C-W>" %:h
 nnoremap <silent> gl :<C-u>vimgrep /<C-R><C-W>/j %<CR>
 
 "------------------------------------
