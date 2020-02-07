@@ -4,7 +4,7 @@ scriptencoding utf-8
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 17-Mar-2017.
+" Last Change: 07-Feb-2020.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -281,7 +281,7 @@ autocmd FileType ruby setl tabstop=2 expandtab shiftwidth=2
 "------------------------
 " search
 "------------------------
-nnoremap <silent> gu /<C-R><C-W><CR>
+nnoremap <silent> gt /<C-R><C-W><CR>
 
 "------------------------
 " filer
@@ -428,10 +428,11 @@ NeoBundle 'iissnan/tangoX'
 NeoBundle 'vim-scripts/cascadia.vim'
 
 call neobundle#end()
-NeoBundleCheck
 
 filetype on
 filetype plugin indent on
+
+NeoBundleCheck
 
 "---------------------------------------------------------------------------
 " other customize
