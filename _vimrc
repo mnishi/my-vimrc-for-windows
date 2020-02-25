@@ -4,7 +4,7 @@ scriptencoding utf-8
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 17-Mar-2017.
+" Last Change: 25-Feb-2020.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -133,8 +133,10 @@ set smartcase
 "
 " タブの画面上での幅
 set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 " タブをスペースに展開しない (expandtab:展開する)
-set noexpandtab
+set expandtab
 " 自動的にインデントする (noautoindent:インデントしない)
 set autoindent
 " バックスペースでインデントや改行を削除できるようにする
@@ -271,33 +273,33 @@ filetype off
 "------------------------
 autocmd FileType python setl autoindent
 autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-autocmd FileType python setl tabstop=8 expandtab shiftwidth=4 softtabstop=4
+autocmd FileType python setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
 
 "------------------------
 " for ruby
 "------------------------
-autocmd FileType ruby setl tabstop=2 expandtab shiftwidth=2
+autocmd FileType ruby setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
 
 "------------------------
 " search
 "------------------------
-nnoremap <silent> gu /<C-R><C-W><CR>
+nnoremap <silent> gt /<C-R><C-W><CR>
 
 "------------------------
 " filer
 "------------------------
 nmap <F10> :sp %:h<CR>
 
-"------------------------------------
-" unite.vim
-"------------------------------------
-let g:unite_enable_start_insert=0
-noremap <C-U><C-B> :Unite buffer<CR>
-noremap <C-U><C-F> :UniteWithBufferDir -buffer-name=files file<CR>
-noremap <C-U><C-R> :Unite file_mru<CR>
-noremap <C-U><C-Y> :Unite -buffer-name=register register<CR>
-noremap <C-U><C-U> :Unite buffer file_mru<CR>
-noremap <C-U><C-A> :Unite UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+""------------------------------------
+"" unite.vim
+""------------------------------------
+"let g:unite_enable_start_insert=0
+"noremap <C-U><C-B> :Unite buffer<CR>
+"noremap <C-U><C-F> :UniteWithBufferDir -buffer-name=files file<CR>
+"noremap <C-U><C-R> :Unite file_mru<CR>
+"noremap <C-U><C-Y> :Unite -buffer-name=register register<CR>
+"noremap <C-U><C-U> :Unite buffer file_mru<CR>
+"noremap <C-U><C-A> :Unite UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
 "------------------------------------
 " qfixgrep
@@ -404,8 +406,8 @@ call neobundle#begin(expand($vim . '/vimfiles/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
+"NeoBundle 'Shougo/unite.vim'
+"NeoBundle 'Shougo/neomru.vim'
 "NeoBundle 'majutsushi/tagbar'
 NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'fuenor/qfixgrep'
