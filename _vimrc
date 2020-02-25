@@ -430,10 +430,11 @@ NeoBundle 'iissnan/tangoX'
 NeoBundle 'vim-scripts/cascadia.vim'
 
 call neobundle#end()
-NeoBundleCheck
 
 filetype on
 filetype plugin indent on
+
+NeoBundleCheck
 
 "---------------------------------------------------------------------------
 " other customize
